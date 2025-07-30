@@ -4,6 +4,7 @@ FROM python:3.11-slim
 # Set working directory
 WORKDIR /app
 
+
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     curl \
@@ -27,7 +28,7 @@ ENV STREAMLIT_SERVER_PORT=8501
 ENV STREAMLIT_SERVER_ADDRESS=0.0.0.0
 
 # Start application with built-in wait for Ollama
-CMD ["sh", "-c", "\
+CMD sh -c "\
     echo '🚀 Starting RAG Chatbot...' && \
     echo '⏳ Waiting for Ollama...' && \
     while ! curl -s http://ollama:11434/api/tags > /dev/null 2>&1; do \
@@ -42,5 +43,4 @@ CMD ["sh", "-c", "\
         --max-time 300 && \
     echo '✅ Model ready!' && \
     echo '🎉 Starting application...' && \
-    streamlit run main.py --server.port=8501 --server.address=0.0.0.0 \
-    "]
+    streamlit run main.py --server.port=8501 --server.address=0.0.0.0"
