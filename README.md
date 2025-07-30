@@ -53,7 +53,7 @@ A production-ready bilingual (Hindi + English) document chat system that lets yo
 
 5. **Start the application with Docker:**
    ```bash
-   docker-compose up --build
+   docker-shell.bat
    ```
 
 6. **Open your browser:**
